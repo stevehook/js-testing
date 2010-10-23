@@ -1,0 +1,6 @@
+desc "Run all tests"
+task :run_all do
+  system "ruby ./automation/test_runner.rb"
+end
+
+task :default => :run_all

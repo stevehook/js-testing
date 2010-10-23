@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Watermark Test Page</title>
+  <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen" />
+  <script src="../lib/jquery-1.4.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/qunit.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jquery.watermark.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#watermarked').watermark();
+    });
+    
+    $(document).ready(function() {
+      module("Initial state", {
+        setup: function() {
+          var control = $("#watermarked");
+          control.focus().val('').blur();
+        }
+      });
+  
+      test("should be initialised with the watermark css class", function() {
+        ok($("#watermarked").hasClass($.fn.watermark.defaults.watermarkClass));
+      });
+  
+      test("should be initialised with the watermark text", function() {
+        equals($("#watermarked").val(), $.fn.watermark.defaults.message);
+      });
+
+      module("Focused state");
+  
+      test("should hide watermarked text when focus is set", function() {
+        var control = $("#watermarked");
+        control.focus();
+        ok(!control.hasClass($.fn.watermark.defaults.watermarkClass));
+        equals(control.val(), "");
+      });
+
+      module("Unfocused with value state");
+  
+      test("should retain entered text when focus is removed", function() {
+        var control = $("#watermarked");
+        control.focus();
+        control.val('Some text entered by the user...');
+        control.blur();
+        ok(!control.hasClass($.fn.watermark.defaults.watermarkClass));
+        equals(control.val(), 'Some text entered by the user...');
+      });
+    });
+  </script>
+</head>
+<body id="body" onload="">
+  <h1 id="qunit-header">Watermark Tests</h1>
+  <h2 id="qunit-banner"></h2>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">test markup, will be hidden</div>
+  <input type="text" name="watermarked" value="" id="watermarked"></input>
+</body>
+</html>

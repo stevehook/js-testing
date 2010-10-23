@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Onoff Test Page</title>
+  <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../lib/jquery.onoff.css" type="text/css" media="screen" />
+  <script src="../lib/jquery-1.4.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/qunit.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jquery.onoff.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.onoff').onoff();
+    });
+    
+    $(document).ready(function() {
+			var onContainer = $('.onoffContainer')[0];
+			var offContainer = $('.onoffContainer')[1];
+	
+      module("Initial state", {
+        setup: function() {
+        }
+      });
+
+		  test("should be initialised to ON state", function() {
+		    equals(onContainer.scrollLeft, 0, 'scroll position should be zero');
+		  });
+
+		  test("should be initialised to OFF state", function() {
+		    ok(offContainer.scrollLeft > 0, 'scroll position should be greater than zero');
+		  });
+    });
+  </script>
+  <style type="text/css" media="screen">
+    div:focus { 
+      border: 1px solid #f00;
+    }
+  </style>
+</head>
+<body id="body" onload="">
+  <h1 id="qunit-header">Onoff Tests</h1>
+  <h2 id="qunit-banner"></h2>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">test markup, will be hidden</div><br/>
+  <input type="text" class="onoff" name="onoff-on" value="True" id="onoff-on" tabindex='0'></input><br/>
+  <input type="text" class="onoff" name="onoff-off" value="False" id="onoff-off" tabindex='0'></input>
+</body>
+</html>

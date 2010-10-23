@@ -1,0 +1,22 @@
+.onoffContainer {
+  display: inline-block;
+  border: 1px solid #BBB;
+  overflow: hidden;
+}
+
+.onoffInner {
+
+}
+
+.onoffLabel {
+  float: left;
+  display: inline;
+  text-align: center;
+}
+
+.onoffButton {
+  float: left;
+  display: inline;
+  height: auto;
+  background-color: #DDD;
+}
