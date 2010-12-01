@@ -11,39 +11,11 @@
   <script src="../lib/jquery.onoff.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
     $(document).ready(function() {
-			$('#onoff-on').val($.fn.onoff.defaults.onValue);
-			$('#onoff-off').val($.fn.onoff.defaults.offValue);
       $('.onoff').onoff();
     });
     
     $(document).ready(function() {
-			var onContainer = $('.onoffContainer')[0];
-			var offContainer = $('.onoffContainer')[1];
-	
-      module("Initial state", {
-        setup: function() {
-        }
-      });
-
-		  test("should be initialised to ON state", function() {
-		    equals(onContainer.scrollLeft, 0, 'scroll position should be zero');
-		  });
-
-		  test("should be initialised to OFF state", function() {
-		    ok(offContainer.scrollLeft > 0, 'scroll position should be greater than zero');
-		  });
-
-		  test("mouse click should switch OFF to ON", function() {
-				$(offContainer).click();
-		    equals($('#onoff-off').val(), $.fn.onoff.defaults.onValue, 'value should now be True');
-		    equals(offContainer.scrollLeft, 0, 'scroll position should be zero');
-		  });
-
-		  test("mouse click should switch ON to OFF", function() {
-				$(onContainer).click();
-		    equals($('#onoff-on').val(), $.fn.onoff.defaults.offValue, 'value should now be False');
-		    ok(onContainer.scrollLeft > 0, 'scroll position should be greater than zero');
-		  });
+      // TODO: tests
     });
   </script>
   <style type="text/css" media="screen">
@@ -53,12 +25,12 @@
   </style>
 </head>
 <body id="body" onload="">
-	<h1 id="qunit-header">Onoff Tests</h1>
-	<h2 id="qunit-banner"></h2>
-	<h2 id="qunit-userAgent"></h2>
-	<ol id="qunit-tests"></ol>
-	<div id="qunit-fixture">test markup, will be hidden</div><br/>
-	<input type="text" class="onoff" name="onoff-on" value="True" id="onoff-on" tabindex='0'></input><br/>
-	<input type="text" class="onoff" name="onoff-off" value="False" id="onoff-off" tabindex='0'></input>
+  <h1 id="qunit-header">Onoff Tests</h1>
+  <h2 id="qunit-banner"></h2>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">test markup, will be hidden</div><br/>
+  <input type="text" class="onoff" name="onoff-on" value="True" id="onoff" tabindex='0'></input><br/>
+  <input type="text" class="onoff" name="onoff-off" value="False" id="onoff" tabindex='0'></input>
 </body>
 </html>

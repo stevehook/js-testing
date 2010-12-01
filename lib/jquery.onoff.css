@@ -2,8 +2,6 @@
   display: inline-block;
   border: 1px solid #BBB;
   overflow: hidden;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
 }
 
 .onoffInner {
@@ -14,16 +12,6 @@
   float: left;
   display: inline;
   text-align: center;
-  
-  -moz-box-shadow: inset 2px 2px 2px #CCC;
-  -webkit-box-shadow: inset 2px 2px 2px #CCC;
-  box-shadow: inset 2px 2px 2px #CCC;
-}
-
-.onLabel {
-}
-
-.offLabel {
 }
 
 .onoffButton {
@@ -31,13 +19,4 @@
   display: inline;
   height: auto;
   background-color: #DDD;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  
-  background: -moz-linear-gradient(top, #CCC, #EEE);
-  background: -webkit-gradient(linear, left top, left bottom, from(#CCC), to(#EEE));
-
-  -moz-box-shadow: 0 0 4px #444;
-  -webkit-box-shadow: 0 0 4px #444;
-  box-shadow: 0 0 4px #444;
 }

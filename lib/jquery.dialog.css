@@ -1,0 +1,7 @@
+.dialogFrame {
+  border: 1px solid #999;
+  position: absolute;
+  display: none;
+  min-height: 20em;
+  min-width: 30em;
+}

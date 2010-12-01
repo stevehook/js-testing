@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+  "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+  <title>Dialog Test Page</title>
+  <link rel="stylesheet" href="../lib/qunit.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="../lib/jquery.dialog.css" type="text/css" media="screen" />
+  <script src="../lib/jquery-1.4.3.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/qunit.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jstub.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jquery.dialog.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+    });
+    
+    $(document).ready(function() {
+      module("Initial state", {
+        setup: function() {
+          $.jstub.stub($, 'ajax', { url: 'ajax.html', async: false, success: $.jstub.any }, 'some body text...', 0, 'success');
+          $('<div/>').dialog({ url: 'ajax.html' });
+        }
+      });
+
+      test("dialog should be present", function() {
+        ok($("#modalDialog"));
+      });
+
+      test("dialog should be visible", function() {
+        equals($("#modalDialog").css('display'), 'block');
+      });
+
+      test("dialog should be centred", function() {
+        var dialog = $("#modalDialog");
+        equals(dialog.position().left, ($(window).width() - dialog.width())/2);
+        equals(dialog.position().top, ($(window).height() - dialog.height())/2);
+      });
+    });
+  </script>
+</head>
+<body id="body" onload="">
+  <h1 id="qunit-header">Dialog Tests</h1>
+  <h2 id="qunit-banner"></h2>
+  <h2 id="qunit-userAgent"></h2>
+  <ol id="qunit-tests"></ol>
+  <div id="qunit-fixture">test markup, will be hidden</div>
+  <input type="button" name="ok" value="OK" id="OK"></input>
+</body>
+</html>
