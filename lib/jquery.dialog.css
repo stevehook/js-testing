@@ -1,7 +1,38 @@
 .dialogFrame {
-  border: 1px solid #999;
   position: absolute;
   display: none;
-  min-height: 20em;
-  min-width: 30em;
+  min-height: 10em;
+  min-width: 10em;
+
+  border: 1px solid #999;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+
+  box-shadow: 0px 2px 9px #888;
+  -webkit-box-shadow: 0px 2px 9px #888;
+  -moz-box-shadow: 0px 2px 9px #888;
+}
+
+.dialogHeader {
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-topleft: 4px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  background-color: #EEE;
+  font-size: 1.2em;
+  padding: 0.2em 0.2em;
+}
+
+.dialogHeader .closeIcon {
+  float: right;
+  height: 16px;
+  width: 16px;
+  margin-top: 2px;
+  background: #EEE url('icons.png') no-repeat scroll 0 0;
+  border: 1px solid transparent;
+}
+
+.dialogHeader .closeIcon:hover {
+  background: #EEE url('icons_hover.png') no-repeat scroll 0 0;
+  cursor: pointer;
 }

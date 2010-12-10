@@ -10,16 +10,20 @@
   <script src="../lib/jquery.tmpl.js" type="text/javascript" charset="utf-8"></script>
   <script src="../lib/qunit.js" type="text/javascript" charset="utf-8"></script>
   <script src="../lib/jstub.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../lib/jquery-ui-1.8.6.custom.min.js" type="text/javascript" charset="utf-8"></script>
   <script src="../lib/jquery.dialog.js" type="text/javascript" charset="utf-8"></script>
   <script type="text/javascript">
     $(document).ready(function() {
     });
     
     $(document).ready(function() {
+      $.jstub.stub($, 'ajax', { url: 'ajax.html', async: false, success: $.jstub.any }, 'some body text...', 0, 'success');
       module("Initial state", {
         setup: function() {
-          $.jstub.stub($, 'ajax', { url: 'ajax.html', async: false, success: $.jstub.any }, 'some body text...', 0, 'success');
-          $('<div/>').dialog({ url: 'ajax.html' });
+          $('<div/>').dialog({ url: 'ajax.html', effectTimeout: 10 });
+        },
+        teardown: function() {
+          $('.dialogFrame').detach();
         }
       });
 
@@ -33,9 +37,42 @@
 
       test("dialog should be centred", function() {
         var dialog = $("#modalDialog");
-        equals(dialog.position().left, ($(window).width() - dialog.width())/2);
-        equals(dialog.position().top, ($(window).height() - dialog.height())/2);
+        equals(dialog.position().left, ($(window).width() - dialog.width())/2, "Verify left");
+        equals(dialog.position().top, ($(window).height() - dialog.height())/2, "Verify top");
       });
+
+      asyncTest("dialog should close when we click the close button", function() {
+        $('.closeIcon').click();
+        
+        // TODO: Refactor this into a helper method...
+        var maxIterations = 100;
+        var interval = setInterval(function() {
+          maxIterations--;
+          if ($('.dialogFrame').length == 0) {
+            ok(true, "Verify that dialogFrame was removed");
+            clearInterval(interval);
+            start();
+          }
+          if (maxIterations == 0) { 
+            ok(false, "Verify that dialogFrame was removed");
+            clearInterval(interval);
+            start();
+          }
+        }, 13);
+      });
+      
+      // withinTimeout: function(assertion, message) {
+          //    var maxIterations = 100;
+          //    var interval = setInterval(function() {
+          //      if (assertion) {
+          //        ok(true, message);
+          //        clearInterval(interval);
+          //        return;
+          //      }
+          //      if (maxIterations == 0) { clearInterval(interval); }
+          //    }, 13);
+          //    ok(false, message);
+          //  }
     });
   </script>
 </head>

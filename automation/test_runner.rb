@@ -15,7 +15,12 @@ def run_test(file_name)
   else
     puts 'Test failed to run'
   end
-  #TODO: parse the output from the test and return it
+  # parse the output from the test and print error messages for failing tests
+  browser.elements_by_xpath("//ol[@id='qunit-tests']/li").each_with_index do |li, index|
+    if li.class_name == 'fail'
+      puts "  #{index} - #{li.text}"
+    end
+  end
   #TODO: find the failing tests and list them
   browser.close
 end
