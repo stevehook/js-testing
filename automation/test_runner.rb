@@ -1,7 +1,7 @@
 require "rubygems"
 require "watir"
 
-test_folder = 'tests'
+test_folder = 'tests/qunit'
 #TODO: set test_folder from an optional input parameter
 
 def run_test(file_name)
