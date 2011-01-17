@@ -1,6 +1,14 @@
-desc "Run all tests"
-task :run_all do
+desc "Run qunit tests"
+task :qunit do
   system "ruby ./automation/test_runner.rb"
 end
+
+desc "Run jasmine tests"
+task :jasmine do
+  system "ruby ./automation/jasmine_test_runner.rb"
+end
+
+desc "Run all tests"
+task :run_all => [:qunit, :jasmine]
 
 task :default => :run_all
